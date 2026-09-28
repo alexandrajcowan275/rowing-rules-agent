@@ -1,0 +1,150 @@
+{
+  "completed_at": "2026-09-28T07:43:47.772162+00:00",
+  "model": "gpt-4.1-mini",
+  "embedding_model": "text-embedding-3-small",
+  "pdf_sha256": "73bc5549c5ebf9d7062cf84e23d2fd904ecfd21eea414255a26577ec9172a203",
+  "correct": 4,
+  "total": 6,
+  "errors": 0,
+  "cases": [
+    {
+      "question": "In an on-water race, what penalty is assessed for a false start, and what happens after two warnings in the same race?",
+      "expected": "answer",
+      "actual": "refusal",
+      "passed": false,
+      "result": {
+        "answer": "Not enough evidence in the sources to answer.",
+        "citations": [],
+        "confidence": "low"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "generate",
+        "refuse"
+      ],
+      "refusal_reason": "Missing or invalid source citations."
+    },
+    {
+      "question": "What is the minimum diameter of a boat's bowball?",
+      "expected": "answer",
+      "actual": "answer",
+      "passed": true,
+      "result": {
+        "answer": "The minimum diameter of a boat's bowball shall be at least 4 centimeters.",
+        "citations": [
+          {
+            "rule": "Rule 3-105",
+            "page": 41,
+            "quote": "The bowball shall be at least 4 centimeters in diameter."
+          }
+        ],
+        "confidence": "high"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "generate"
+      ],
+      "refusal_reason": ""
+    },
+    {
+      "question": "Under the general coxswain rules, may a male coxswain compete in a women's event?",
+      "expected": "answer",
+      "actual": "answer",
+      "passed": true,
+      "result": {
+        "answer": "Under the general coxswain rules, a male coxswain may compete in women's events.",
+        "citations": [
+          {
+            "rule": "Rule 4-105",
+            "page": 52,
+            "quote": "(b) A male Coxswain may compete in Events for women, and a female Coxswain may compete in Events for men."
+          },
+          {
+            "rule": "Rule 4-103",
+            "page": 46,
+            "quote": "Coxswains are exempt from this rule and can compete in any Events."
+          }
+        ],
+        "confidence": "high"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "generate"
+      ],
+      "refusal_reason": ""
+    },
+    {
+      "question": "Who is responsible for a crew's steering, and when will the referee instruct it to alter course?",
+      "expected": "answer",
+      "actual": "refusal",
+      "passed": false,
+      "result": {
+        "answer": "Not enough evidence in the sources to answer.",
+        "citations": [],
+        "confidence": "low"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "generate",
+        "refuse"
+      ],
+      "refusal_reason": "Missing or invalid source citations."
+    },
+    {
+      "question": "Who won the 2024 Olympic women's eight?",
+      "expected": "refusal",
+      "actual": "refusal",
+      "passed": true,
+      "result": {
+        "answer": "Not enough evidence in the sources to answer.",
+        "citations": [],
+        "confidence": "low"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "refuse"
+      ],
+      "refusal_reason": "No relevant evidence after three rewrites."
+    },
+    {
+      "question": "What is USC's rowing budget?",
+      "expected": "refusal",
+      "actual": "refusal",
+      "passed": true,
+      "result": {
+        "answer": "Not enough evidence in the sources to answer.",
+        "citations": [],
+        "confidence": "low"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "refuse"
+      ],
+      "refusal_reason": "No relevant evidence after three rewrites."
+    }
+  ]
+}
