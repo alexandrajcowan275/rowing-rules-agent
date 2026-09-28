@@ -22,6 +22,16 @@ class Chunk(TypedDict):
     text: str
 
 
+def normalize_text(text: str) -> str:
+    """Normalize layout and typography, never words, case, or factual content."""
+    text = text.translate(str.maketrans({
+        "‘": "'", "’": "'", "“": '"', "”": '"',
+        "‐": "-", "‑": "-", "‒": "-", "–": "-", "—": "-",
+    }))
+    text = re.sub(r"(?<=\w)-[ \t]*\r?\n[ \t]*(?=\w)", "", text)
+    return " ".join(text.split())
+
+
 def split_pages(pages: list[str]) -> list[Chunk]:
     chunks = []
     current_rule = None
@@ -48,8 +58,7 @@ def split_pages(pages: list[str]) -> list[Chunk]:
             section = text[start:end]
             # Remove layout-only article/part headings without losing rule text.
             section = re.sub(r"^(?:ARTICLE [IVX]+|Part [A-Z])[^\n]*$", "", section, flags=re.MULTILINE)
-            section = re.sub(r"(?<=\w)-\s*\n(?=\w)", "", section)
-            section = " ".join(section.split())
+            section = normalize_text(section)
             start = 0
             while start < len(section):
                 end = min(start + CHUNK_SIZE, len(section))
@@ -60,7 +69,11 @@ def split_pages(pages: list[str]) -> list[Chunk]:
                 chunks.append(Chunk(rule=rule, page=page_number, text=section[start:end]))
                 if end == len(section):
                     break
-                start = end - OVERLAP
+                next_start = end - OVERLAP
+                # Keep the overlap near 120 characters without clipping a word.
+                while next_start > start and section[next_start - 1] != " ":
+                    next_start -= 1
+                start = next_start if next_start > start else end
         if matches:
             current_rule = "Rule " + matches[-1].group(1)
     if not chunks:

@@ -28,7 +28,8 @@ class CorpusTests(unittest.TestCase):
         self.assertGreater(len(first), 1)
         self.assertTrue(all(len(c['text']) <= CHUNK_SIZE for c in chunks))
         for left, right in zip(first, first[1:]):
-            self.assertEqual(left['text'][-120:], right['text'][:120])
+            self.assertTrue(any(left['text'][-n:] == right['text'][:n]
+                                for n in range(120, 125)))
         self.assertNotIn('1-102', first[-1]['text'])
 
     def test_wrapped_rule_references_are_not_headings(self):

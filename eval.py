@@ -64,6 +64,7 @@ def main():
                 records.append({"question": question, "expected": "answer" if should_answer else "refusal",
                                 "actual": "answer" if answered else "refusal", "passed": passed,
                                 "result": result.model_dump(), "path": state["path"],
+                                "draft": state["draft"].model_dump() if state["draft"] else None,
                                 "refusal_reason": state["refusal_reason"]})
                 print(f"  {result.answer}")
                 for citation in result.citations:
