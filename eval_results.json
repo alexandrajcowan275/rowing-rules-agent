@@ -1,9 +1,9 @@
 {
-  "completed_at": "2026-09-28T07:52:28.786450+00:00",
+  "completed_at": "2026-09-28T08:01:46.530715+00:00",
   "model": "gpt-4.1-mini",
   "embedding_model": "text-embedding-3-small",
   "pdf_sha256": "73bc5549c5ebf9d7062cf84e23d2fd904ecfd21eea414255a26577ec9172a203",
-  "correct": 6,
+  "correct": 5,
   "total": 6,
   "errors": 0,
   "cases": [
@@ -13,7 +13,7 @@
       "actual": "answer",
       "passed": true,
       "result": {
-        "answer": "In an on-water race, a Crew that commits a false start is assessed a warning. If the same Crew receives two warnings, including those for false starts, applicable to the same race, the Crew shall be excluded from that race under Rule 2-602(c).",
+        "answer": "In an on-water race, a crew committing a false start is assessed a warning. If a crew receives two warnings, including false starts, in the same race, it shall be excluded as per Rule 2-602(c).",
         "citations": [
           {
             "rule": "Rule 2-308",
@@ -29,7 +29,7 @@
         "generate"
       ],
       "draft": {
-        "answer": "In an on-water race, a Crew that commits a false start is assessed a warning. If the same Crew receives two warnings, including those for false starts, applicable to the same race, the Crew shall be excluded from that race under Rule 2-602(c).",
+        "answer": "In an on-water race, a crew committing a false start is assessed a warning. If a crew receives two warnings, including false starts, in the same race, it shall be excluded as per Rule 2-602(c).",
         "citations": [
           {
             "rule": "Rule 2-308",
@@ -78,36 +78,36 @@
     {
       "question": "Under the general coxswain rules, may a male coxswain compete in a women's event?",
       "expected": "answer",
-      "actual": "answer",
-      "passed": true,
+      "actual": "refusal",
+      "passed": false,
       "result": {
-        "answer": "Yes, under the general coxswain rules, a male coxswain may compete in events for women.",
-        "citations": [
-          {
-            "rule": "Rule 4-105",
-            "page": 52,
-            "quote": "(b) A male Coxswain may compete in Events for women, and a female Coxswain may compete in Events for men."
-          }
-        ],
-        "confidence": "high"
+        "answer": "Not enough evidence in the sources to answer.",
+        "citations": [],
+        "confidence": "low"
       },
       "path": [
         "retrieve",
         "grade_documents",
-        "generate"
+        "generate",
+        "refuse"
       ],
       "draft": {
-        "answer": "Yes, under the general coxswain rules, a male coxswain may compete in events for women.",
+        "answer": "Under the general coxswain rules, a male coxswain may compete in women's events. Specifically, Rule 4-105(b) states: \"A male Coxswain may compete in Events for women, and a female Coxswain may compete in Events for men.\" Moreover, Rule 4-103(h) clarifies: \"Coxswains are exempt from this rule and can compete in any Events.\"",
         "citations": [
           {
-            "rule": "Rule 4-105",
+            "rule": "4-105",
             "page": 52,
             "quote": "(b) A male Coxswain may compete in Events for women, and a female Coxswain may compete in Events for men."
+          },
+          {
+            "rule": "4-103",
+            "page": 46,
+            "quote": "(h) A Rower assigned a sex at birth of female can compete in any Event. A Rower assigned a sex at birth of male cannot compete in Events for women. Coxswains are exempt from this rule and can compete in any Events."
           }
         ],
         "confidence": "high"
       },
-      "refusal_reason": ""
+      "refusal_reason": "Missing or invalid source citations."
     },
     {
       "question": "Who is responsible for a crew's steering, and when will the referee instruct it to alter course?",
@@ -115,17 +115,12 @@
       "actual": "answer",
       "passed": true,
       "result": {
-        "answer": "Each crew is responsible for its own steering. The referee will instruct a crew to alter its course only to prevent interference, otherwise ensure safety, or to ensure fairness to other crews. Additionally, if a crew is steering towards a previously unknown or unidentified obstacle obstructing its assigned lane and is in reasonable danger of collision, the referee will alert and instruct the crew to alter its course, and if collision is imminent, order the crew to stop.",
+        "answer": "Each crew is responsible for its own steering. The referee will instruct a crew to alter its course only to prevent interference, ensure safety, or ensure fairness to other crews.",
         "citations": [
           {
             "rule": "Rule 2-402",
             "page": 27,
             "quote": "Each Crew is responsible for its own steering. The Referee will not render assistance to Crews merely to steer a better course, even if a Crew leaves its own water, and will instruct a Crew to alter its course only to prevent Interference, otherwise ensure safety, or to ensure fairness to other Crews."
-          },
-          {
-            "rule": "Rule 2-408",
-            "page": 29,
-            "quote": "is steering towards a previously unknown or unidentified obstacle or installation obstructing its assigned lane and is in reasonable danger of collision, the Referee shall alert the Crew by raising a white flag vertically, calling out the name of the Crew, and then calling out \"Obstacle!\", and instruct the Crew to alter its course as described in Rule 2-407(a) (\"Referee's Instructions to Crews\"). If collision is imminent, the Referee shall order the Crew to stop as described in Rule 2-407(b) (\"Referee's Instructions to Crews\"), after which it may correct its course and continue"
           }
         ],
         "confidence": "high"
@@ -136,17 +131,12 @@
         "generate"
       ],
       "draft": {
-        "answer": "Each crew is responsible for its own steering. The referee will instruct a crew to alter its course only to prevent interference, otherwise ensure safety, or to ensure fairness to other crews. Additionally, if a crew is steering towards a previously unknown or unidentified obstacle obstructing its assigned lane and is in reasonable danger of collision, the referee will alert and instruct the crew to alter its course, and if collision is imminent, order the crew to stop.",
+        "answer": "Each crew is responsible for its own steering. The referee will instruct a crew to alter its course only to prevent interference, ensure safety, or ensure fairness to other crews.",
         "citations": [
           {
             "rule": "Rule 2-402",
             "page": 27,
             "quote": "Each Crew is responsible for its own steering. The Referee will not render assistance to Crews merely to steer a better course, even if a Crew leaves its own water, and will instruct a Crew to alter its course only to prevent Interference, otherwise ensure safety, or to ensure fairness to other Crews."
-          },
-          {
-            "rule": "Rule 2-408",
-            "page": 29,
-            "quote": "is steering towards a previously unknown or unidentified obstacle or installation obstructing its assigned lane and is in reasonable danger of collision, the Referee shall alert the Crew by raising a white flag vertically, calling out the name of the Crew, and then calling out \"Obstacle!\", and instruct the Crew to alter its course as described in Rule 2-407(a) (\"Referee's Instructions to Crews\"). If collision is imminent, the Referee shall order the Crew to stop as described in Rule 2-407(b) (\"Referee's Instructions to Crews\"), after which it may correct its course and continue"
           }
         ],
         "confidence": "high"
