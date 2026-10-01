@@ -1,5 +1,7 @@
 # Rowing Rules Agent: Evidence-Gated Q&A over the USRowing Rules of Rowing
 
+**Live demo:** [rowing-rules-agent.vercel.app](https://rowing-rules-agent.vercel.app/) (replays real recorded agent outputs, no API key needed)
+
 A small Python agent that answers rowing rules questions from a local copy of the official USRowing rulebook. It checks retrieved evidence, retries unsuccessful searches, and refuses when it cannot support a complete answer. LangGraph controls the workflow; the OpenAI API provides embeddings and structured LLM responses.
 
 ## Why I built this
