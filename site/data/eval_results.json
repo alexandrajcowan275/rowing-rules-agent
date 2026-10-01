@@ -1,0 +1,201 @@
+{
+  "completed_at": "2026-09-28T08:01:46.530715+00:00",
+  "model": "gpt-4.1-mini",
+  "embedding_model": "text-embedding-3-small",
+  "pdf_sha256": "73bc5549c5ebf9d7062cf84e23d2fd904ecfd21eea414255a26577ec9172a203",
+  "correct": 5,
+  "total": 6,
+  "errors": 0,
+  "cases": [
+    {
+      "question": "In an on-water race, what penalty is assessed for a false start, and what happens after two warnings in the same race?",
+      "expected": "answer",
+      "actual": "answer",
+      "passed": true,
+      "result": {
+        "answer": "In an on-water race, a crew committing a false start is assessed a warning. If a crew receives two warnings, including false starts, in the same race, it shall be excluded as per Rule 2-602(c).",
+        "citations": [
+          {
+            "rule": "Rule 2-308",
+            "page": 25,
+            "quote": "(b) Crew(s) committing a false start will be assessed a warning. A Crew that receives two warnings, including false starts, applicable to the same Race shall be excluded under Rule 2-602(c) (\"Types of Penalties\")."
+          }
+        ],
+        "confidence": "high"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "generate"
+      ],
+      "draft": {
+        "answer": "In an on-water race, a crew committing a false start is assessed a warning. If a crew receives two warnings, including false starts, in the same race, it shall be excluded as per Rule 2-602(c).",
+        "citations": [
+          {
+            "rule": "Rule 2-308",
+            "page": 25,
+            "quote": "(b) Crew(s) committing a false start will be assessed a warning. A Crew that receives two warnings, including false starts, applicable to the same Race shall be excluded under Rule 2-602(c) (\"Types of Penalties\")."
+          }
+        ],
+        "confidence": "high"
+      },
+      "refusal_reason": ""
+    },
+    {
+      "question": "What is the minimum diameter of a boat's bowball?",
+      "expected": "answer",
+      "actual": "answer",
+      "passed": true,
+      "result": {
+        "answer": "The minimum diameter of a boat's bowball shall be at least 4 centimeters.",
+        "citations": [
+          {
+            "rule": "Rule 3-105",
+            "page": 41,
+            "quote": "The bowball shall be at least 4 centimeters in diameter."
+          }
+        ],
+        "confidence": "high"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "generate"
+      ],
+      "draft": {
+        "answer": "The minimum diameter of a boat's bowball shall be at least 4 centimeters.",
+        "citations": [
+          {
+            "rule": "Rule 3-105",
+            "page": 41,
+            "quote": "The bowball shall be at least 4 centimeters in diameter."
+          }
+        ],
+        "confidence": "high"
+      },
+      "refusal_reason": ""
+    },
+    {
+      "question": "Under the general coxswain rules, may a male coxswain compete in a women's event?",
+      "expected": "answer",
+      "actual": "refusal",
+      "passed": false,
+      "result": {
+        "answer": "Not enough evidence in the sources to answer.",
+        "citations": [],
+        "confidence": "low"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "generate",
+        "refuse"
+      ],
+      "draft": {
+        "answer": "Under the general coxswain rules, a male coxswain may compete in women's events. Specifically, Rule 4-105(b) states: \"A male Coxswain may compete in Events for women, and a female Coxswain may compete in Events for men.\" Moreover, Rule 4-103(h) clarifies: \"Coxswains are exempt from this rule and can compete in any Events.\"",
+        "citations": [
+          {
+            "rule": "4-105",
+            "page": 52,
+            "quote": "(b) A male Coxswain may compete in Events for women, and a female Coxswain may compete in Events for men."
+          },
+          {
+            "rule": "4-103",
+            "page": 46,
+            "quote": "(h) A Rower assigned a sex at birth of female can compete in any Event. A Rower assigned a sex at birth of male cannot compete in Events for women. Coxswains are exempt from this rule and can compete in any Events."
+          }
+        ],
+        "confidence": "high"
+      },
+      "refusal_reason": "Missing or invalid source citations."
+    },
+    {
+      "question": "Who is responsible for a crew's steering, and when will the referee instruct it to alter course?",
+      "expected": "answer",
+      "actual": "answer",
+      "passed": true,
+      "result": {
+        "answer": "Each crew is responsible for its own steering. The referee will instruct a crew to alter its course only to prevent interference, ensure safety, or ensure fairness to other crews.",
+        "citations": [
+          {
+            "rule": "Rule 2-402",
+            "page": 27,
+            "quote": "Each Crew is responsible for its own steering. The Referee will not render assistance to Crews merely to steer a better course, even if a Crew leaves its own water, and will instruct a Crew to alter its course only to prevent Interference, otherwise ensure safety, or to ensure fairness to other Crews."
+          }
+        ],
+        "confidence": "high"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "generate"
+      ],
+      "draft": {
+        "answer": "Each crew is responsible for its own steering. The referee will instruct a crew to alter its course only to prevent interference, ensure safety, or ensure fairness to other crews.",
+        "citations": [
+          {
+            "rule": "Rule 2-402",
+            "page": 27,
+            "quote": "Each Crew is responsible for its own steering. The Referee will not render assistance to Crews merely to steer a better course, even if a Crew leaves its own water, and will instruct a Crew to alter its course only to prevent Interference, otherwise ensure safety, or to ensure fairness to other Crews."
+          }
+        ],
+        "confidence": "high"
+      },
+      "refusal_reason": ""
+    },
+    {
+      "question": "Who won the 2024 Olympic women's eight?",
+      "expected": "refusal",
+      "actual": "refusal",
+      "passed": true,
+      "result": {
+        "answer": "Not enough evidence in the sources to answer.",
+        "citations": [],
+        "confidence": "low"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "refuse"
+      ],
+      "draft": null,
+      "refusal_reason": "No relevant evidence after three rewrites."
+    },
+    {
+      "question": "What is USC's rowing budget?",
+      "expected": "refusal",
+      "actual": "refusal",
+      "passed": true,
+      "result": {
+        "answer": "Not enough evidence in the sources to answer.",
+        "citations": [],
+        "confidence": "low"
+      },
+      "path": [
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "rewrite_query",
+        "retrieve",
+        "grade_documents",
+        "refuse"
+      ],
+      "draft": null,
+      "refusal_reason": "No relevant evidence after three rewrites."
+    }
+  ]
+}

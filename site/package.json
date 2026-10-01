@@ -1,0 +1,33 @@
+{
+  "name": "rowing-rules-showcase",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "sync:data": "node scripts/sync-data.mjs",
+    "predev": "npm run sync:data",
+    "dev": "next dev --webpack",
+    "prebuild": "npm run sync:data",
+    "build": "next build --webpack",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "next": "16.3.8",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.9.0"
+  }
+}

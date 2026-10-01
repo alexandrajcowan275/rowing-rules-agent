@@ -1,5 +1,7 @@
 # Rowing Rules Agent: Evidence-Gated Q&A over the USRowing Rules of Rowing
 
+**Live demo:** [rowing-rules-agent.vercel.app](https://rowing-rules-agent.vercel.app/) (replays real recorded agent outputs, no API key needed)
+
 A small Python agent that answers rowing rules questions from a local copy of the official USRowing rulebook. It checks retrieved evidence, retries unsuccessful searches, and refuses when it cannot support a complete answer. LangGraph controls the workflow; the OpenAI API provides embeddings and structured LLM responses.
 
 ## Why I built this
@@ -137,3 +139,33 @@ The citation fix improved the initial **4/6** result to **6/6** on the first pos
 - Strict evidence gates can reject answerable questions, as both the initial 4/6 and latest 5/6 runs demonstrate. A refusal does not mean the rulebook lacks an answer.
 - Confidence is qualitative, not a calibrated probability. The six-question evaluation is small and does not establish broad reliability.
 - The downloaded 2026 edition is a local snapshot. Check the official source for updates; there is no automatic freshness check. Extraction assumes the current numbered-rule layout and text-based PDF.
+
+## Website
+
+The project showcase lives in `site/`: a static Next.js App Router site with TypeScript and Tailwind. It replays recorded evaluation outputs; it does not run the agent or call OpenAI. The Python project is unchanged.
+
+`/` is a recorded chat experience with all six evaluation questions, exact responses, and an animated course map of the actual graph paths. Custom questions receive a demo explanation, not a new answer. `/how-it-works/` follows a 2,000-meter course through the background, workflow, citation diagnosis, limitations, and results. Fonts are self-hosted; SVG/CSS provide the motion, with reduced-motion support and a pause control. No backend, API keys, external service calls, or paid dependencies are used by the website.
+
+With Node.js 22+ installed, run from the repository root:
+
+```bash
+cd site
+npm ci
+npm run dev
+```
+
+Open `http://localhost:3000`. For a production static export, run `npm run build`; the generated files are in `site/out/`. The build uses webpack for compatibility with restricted local environments.
+
+Before development and builds, `scripts/sync-data.mjs` copies the root `eval_results.json`, selected README facts, and a labeled diagnostic excerpt from `docs/citation-diagnosis.md` into `site/data/`, validating the score against the recorded cases. Commit those snapshots when the source results change. Vercel can build using the checked-in snapshots even when only `site/` is available. Only final responses are displayed as chat answers. The explanation page compares a reproduced rejected quote excerpt with a real accepted quote; it identifies the different runs explicitly.
+
+The biography uses `site/public/photos/henley-crew.webp` and `rowing-portrait.webp`, optimized from the supplied rowing photos. Originals are preserved locally and excluded from CLI uploads. Photo selection and alt descriptions live in `site/app/how-it-works/page.tsx`; CSS applies the navy treatment.
+
+To deploy on Vercel:
+
+1. Commit and push `site/` and this README to the GitHub repository.
+2. In Vercel, choose **Add New → Project** and import `alexandrajcowan275/rowing-rules-agent`.
+3. Set **Root Directory** to **`site`** (the repository's `/site` folder).
+4. Use the **Other** (static) framework preset. `site/vercel.json` configures `npm ci`, `npm run build`, and the `out` output directory. Set Node.js to **22.x** or newer. No API keys are needed.
+5. Click **Deploy**. Future pushes to the production branch trigger another deployment.
+
+The share image is `site/public/og-image.png`. Open Graph metadata uses Vercel's automatic production hostname during the build. No `.env`, rulebook PDF, Python environment, or embedding cache is included in the website.

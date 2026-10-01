@@ -1,0 +1,7 @@
+{
+  "biography": "I rowed competitively for years, winning national titles in team boats and racing at the Henley Royal Regatta, and later trained as an NCAA Division I athlete at USC. Rules questions come up constantly at regattas, and a wrong answer can mean a penalty or disqualification. Previously I built a RAG research tool at a VC firm; this project adds an agentic layer that checks its own evidence, retries, and refuses instead of guessing.",
+  "chunks": 292,
+  "rules": 160,
+  "testsPassed": 21,
+  "testsTotal": 21
+}

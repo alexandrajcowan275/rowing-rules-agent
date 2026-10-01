@@ -5,3 +5,13 @@ __pycache__/
 .cache/
 data/*.pdf
 .DS_Store
+
+# Static showcase dependencies, generated output, and deployment state
+node_modules/
+site/node_modules/
+site/.next/
+site/out/
+.vercel/
+site/.vercel/
+.env.*
+data/usrowing-rules.pdf
