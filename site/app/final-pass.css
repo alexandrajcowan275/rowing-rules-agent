@@ -1,0 +1,103 @@
+/* Editorial race-control treatment for the evidence-first demo. */
+.chat-app {
+  background: var(--panel);
+  border-inline: 1px solid color-mix(in srgb, var(--line) 58%, transparent);
+}
+.chat-panel {
+  background:
+    radial-gradient(ellipse at 12% 18%, color-mix(in srgb, var(--signal) 12%, transparent), transparent 38%),
+    var(--panel);
+}
+.chat-panel-top {
+  background: var(--water-deep);
+  color: var(--water-text);
+  border-bottom: 1px solid color-mix(in srgb, var(--signal) 55%, var(--water-deep));
+}
+.chat-panel-top .status-dot { background: var(--signal); box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 18%, transparent); }
+.chat-panel-top .text-button { color: var(--signal); }
+.message-thread { position: relative; }
+.chat-welcome {
+  min-height: 100%;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(34px, 5vw, 82px);
+}
+.chat-welcome::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 6% 0 4% 48%;
+  opacity: .62;
+  background:
+    linear-gradient(166deg, transparent 0 19%, color-mix(in srgb, var(--signal) 65%, transparent) 19.2% 19.5%, transparent 19.7% 39%, color-mix(in srgb, var(--line) 75%, transparent) 39.2% 39.5%, transparent 39.7% 59%, color-mix(in srgb, var(--line) 75%, transparent) 59.2% 59.5%, transparent 59.7% 79%, color-mix(in srgb, var(--line) 75%, transparent) 79.2% 79.5%, transparent 79.7%),
+    linear-gradient(90deg, transparent 0 24%, color-mix(in srgb, var(--line) 52%, transparent) 24.2% 24.5%, transparent 24.7% 49%, color-mix(in srgb, var(--line) 52%, transparent) 49.2% 49.5%, transparent 49.7% 74%, color-mix(in srgb, var(--line) 52%, transparent) 74.2% 74.5%, transparent 74.7%);
+  mask-image: linear-gradient(90deg, transparent, #000 35%, #000);
+}
+.chat-welcome > .eyebrow {
+  color: var(--accent-ink);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .17em;
+}
+.chat-welcome h1 {
+  max-width: 720px;
+  font-size: clamp(86px, 9vw, 138px);
+  line-height: .76;
+  letter-spacing: -.055em;
+}
+.chat-welcome h1 em { color: var(--accent-ink); font-style: italic; }
+.chat-welcome > p:not(.eyebrow) {
+  max-width: 470px;
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.55;
+}
+.welcome-note {
+  width: fit-content;
+  max-width: 470px;
+  padding: 15px 18px;
+  border-left: 2px solid var(--signal);
+  background: var(--water-deep);
+  color: var(--water-text);
+}
+.welcome-note .olympic-replay { color: var(--signal); border-color: var(--signal); }
+.chat-course {
+  background: var(--water-deep);
+  color: var(--water-text);
+}
+.chat-course .course-intro h2 { color: var(--water-text); }
+.course-map .map-heading { color: var(--water-text); }
+.composer {
+  background: color-mix(in srgb, var(--water-deep) 96%, transparent);
+  color: var(--water-text);
+  border-top: 1px solid color-mix(in srgb, var(--signal) 42%, var(--line));
+}
+.composer .suggestion-heading,
+.composer .custom-hint,
+.composer .composer-foot { color: #c4d4ce; }
+.suggestions > button {
+  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  background: color-mix(in srgb, var(--panel) 10%, var(--water-deep));
+  color: var(--water-text);
+  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+.suggestions > button:hover {
+  transform: translateY(-2px);
+  border-color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 12%, var(--water-deep));
+}
+.suggestions > button .chip-number { color: var(--signal); }
+.input-bar { border-color: color-mix(in srgb, var(--line) 76%, transparent); }
+.input-bar textarea { color: var(--water-text); }
+.input-bar button { background: var(--signal); color: #092a32; }
+.answer-kicker { border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.evaluation-badge { font-size: 9px; font-weight: 650; }
+@media (max-width: 780px) {
+  .chat-welcome { min-height: 430px; padding: 42px 24px 30px; }
+  .chat-welcome::before { inset: 12% 0 4% 38%; }
+  .chat-welcome h1 { font-size: clamp(74px, 17vw, 112px); }
+  .chat-welcome > p:not(.eyebrow) { font-size: 14px; }
+  .welcome-note { padding: 13px 15px; }
+}
