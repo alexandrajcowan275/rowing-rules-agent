@@ -19,7 +19,18 @@ function RefusalFlag() {
     </svg>
   );
 }
+function rewriteCount(path: string[]) {
+  return path.filter((step) => step === "rewrite_query").length;
+}
 export function RecordedAnswer({ record }: { record: RecordedCase }) {
+  const rewrites = rewriteCount(record.path);
+  const evaluationLabel = record.passed
+    ? record.actual === "refusal"
+      ? `EXPECTED REFUSAL${rewrites ? ` / ${rewrites} QUERY REWRITES` : ""}`
+      : "PASS / ANSWER GROUNDED"
+    : record.actual === "refusal"
+      ? "FAILED / CITATION VALIDATION"
+      : "FAILED / ANSWER VALIDATION";
   return (
     <div
       className={`recorded-answer ${record.actual === "refusal" ? "is-refusal" : ""}`}
@@ -29,6 +40,9 @@ export function RecordedAnswer({ record }: { record: RecordedCase }) {
           {record.actual === "refusal"
             ? "EVIDENCE GATE / STOP"
             : "RULEBOOK / ANSWER"}
+        </span>
+        <span className={`evaluation-badge ${record.passed ? (record.actual === "refusal" ? "is-refusal" : "is-pass") : "is-fail"}`}>
+          {evaluationLabel}
         </span>
         <span className={`confidence ${record.result.confidence}`}>
           {record.result.confidence} confidence
@@ -196,7 +210,7 @@ export default function ChatExperience({ cases }: { cases: RecordedCase[] }) {
         <div className="chat-panel-top">
           <span className="mono">
             <span className="status-dot" />
-            RECORDED SESSION / SIX QUESTIONS
+            RECORDED EVALUATION / {cases.length} CASES
           </span>
           {messages.length > 0 && (
             <button onClick={reset} className="text-button">
@@ -299,7 +313,7 @@ export default function ChatExperience({ cases }: { cases: RecordedCase[] }) {
           <div className="dock-suggestions" hidden={busy}>
             <div className="suggestion-heading">
               <span className="mono">CHOOSE A RECORDED QUESTION</span>
-              <span className="mono">01—06</span>
+              <span className="mono">01—{String(cases.length).padStart(2, "0")}</span>
             </div>
             <div
               className={`suggestions ${hint ? "is-highlighted" : ""}`}
